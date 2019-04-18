@@ -14,7 +14,7 @@ de façon générale, pour évoluer dans nos techniques de développement et pou
 
 De plus, dans la logique du **peer to peer**, cela permet de fournir des connaissances qui sont créées de façon collective, ce qui offre une **diversité d'approche**, une **évolution continue** de ce savoir, une certaine **solidication** au fur et à mesure de notre apprentissage.
 
-#### Déroulé d'un atelier Code Review
+### Déroulé d'un atelier Code Review
 
 Avant l'atelier, un vote est soumis à l'ensemble des étudiants avec soit des propositions de projets du cursus, soit la liberté aux étudiants de proposer eux-mêmes le projet sur lequel ils souhaiteraient travailler.
 
@@ -26,7 +26,7 @@ l'atelier en deux temps d'environ 1 heure chacun :
 
 À la suite de l'évènement en lui-même, une **nouvelle page de [wiki][wiki-link]** est écrite par la suite pour regrouper les différentes thématiques qui seront sortis, et permettre un résumé qui pourra par la suite être lu et partagé par tous.
 
-#### Amélioration des connaissances
+### Amélioration des connaissances
 
 Nous cherchons à faire **évoluer au maximum ce dépôt**, pour **affiner** le plus possible **les connaissances** qu'il contient. Nous souhaitons que des idées nouvelles, des précisions, des contradictions, des ressources etc. puissent être apportés en dehors des ateliers.
 
