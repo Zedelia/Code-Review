@@ -1,0 +1,46 @@
+.TH ft_ls 1
+.SH NAME
+ft_ls \- list directory contents
+.SH SYNOPSIS
+.B ft_ls 
+[-\fB1aFlRrStUu\fR\] [file ...]
+.SH DESCRIPTION
+For each \fIfile\fR given as an argument, if this file is a different type than 
+directory, display his name and with requested information. If the \fIfile\fR is
+a directory, \fBft_ls\fR display the names of files contained within that directory.
+
+If no operands are given, the content of the current directory are displayed.
+
+If multiple operands are given, display non-directory operands first followed
+by directory sorted in lexicographical order.
+
+.SH OPTIONS
+\fB-1\fR Display one entry per line.
+.PP 
+\fB-a\fR Include hidden files
+.PP
+\fB-F\fR Display a slash (`/') immediately after each pathname that is a directory, 
+\fTan asterisk (`*') after each that is executable, an at sign (`@')
+\fTafter each symbolic link, an equals sign (`=') after each socket, a
+\fTpercent sign (`%') after each whiteout, and a vertical bar (`|') after each that is a FIFO.
+.PP
+\fB-l\fR Display output with long format.
+.PP
+\fB-R\fR Recursively list subdirectories encountered.
+.PP
+\fB-r\fR Reverse sorting order.
+.PP
+\fB-S\fR Sort by file size.
+.PP
+\fB-t\fR Sort by modification time.
+.PP
+\fB-U\fR Sort by creation time.
+.PP
+\fB-u\fR Sort by last access time.
+
+.SH SEE ALSO
+ls(1)
+.SH AUTHOR
+epoggio (epoggio@student.le-101.fr)
+.br
+simrossi (simrossi@student.le-101.fr)

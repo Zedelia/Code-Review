@@ -1,0 +1,124 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   display_process.c                                .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: simrossi <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/01/25 09:21:31 by simrossi     #+#   ##    ##    #+#       */
+/*   Updated: 2019/01/25 09:21:32 by simrossi    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+#include "ft_ls.h"
+
+/*
+** clean_process:
+**
+** Freeing function to liberate element used only during the process.
+*/
+
+static void	clean_process(t_file_head *head_file)
+{
+	if (head_file->work_list)
+		free_folder(&head_file->work_list, 0);
+	ft_strdel(&head_file->print_pattern);
+}
+
+/*
+** recursive_folders:
+**
+** Parse the current t_file_head->work_list, and call the process_manager
+** function for each directory.
+*/
+
+static int	recursive_folders(t_file_head *head_file)
+{
+	t_file	*folder_list;
+	t_file	*save_folder;
+	int		error;
+
+	error = 1;
+	folder_list = head_file->work_list;
+	save_folder = head_file->work_list;
+	head_file->work_list = NULL;
+	ft_strdel(&head_file->print_pattern);
+	head_file->print_foldname = 1;
+	while (folder_list && error)
+	{
+		if (!ft_strequ("..", folder_list->filename) && \
+			!ft_strequ(".", folder_list->filename) &&
+			S_ISDIR(folder_list->info->st_mode))
+		{
+			if (process_manager(&folder_list->path, head_file, FOLDER) == -1)
+				error = 0;
+		}
+		folder_list = folder_list->next;
+	}
+	head_file->work_list = save_folder;
+	return (error ? 1 : -1);
+}
+
+/*
+** show_error:
+**
+** Function called to display an error message with errno when a folder can't
+** be read.
+*/
+
+int			show_error(t_file_head *head_file, char *directory, int status)
+{
+	if (head_file->file_printed >= 1)
+		ft_printf("\n");
+	if (head_file->print_foldname)
+		ft_printf("%s:\n", directory);
+	ft_putstr_fd("ft_ls: ", STDERR_FILENO);
+	perror(directory);
+	head_file->file_printed++;
+	return (status);
+}
+
+/*
+** process_manager:
+**
+** Function to perform the parsing, the sorting and the printing of a chained
+** list, from a folder name or a list of files.
+**
+** Process steps:
+** 	1) Create a t_file list
+**  2) Set informations on maximums of the list.
+**	3) Format a printing pattern
+**	4) Sort the list
+**	5) display it
+**	+ optionnal) Call the function recursively for each folder if needed.
+*/
+
+int			process_manager(char **file_or_dir, t_file_head *head_file, \
+																	int type)
+{
+	int		creation;
+
+	creation = 0;
+	if (type == FOLDER)
+		creation = parse_folder(*file_or_dir, \
+				&head_file->work_list, head_file->opts);
+	else if (type == FILES)
+		creation = stock_file_list(file_or_dir, &head_file->work_list);
+	if (creation == -1)
+		return (free_folder(&head_file->work_list, -1));
+	else if (creation == -2)
+		return (show_error(head_file, *file_or_dir, 0));
+	set_maximum_info(head_file);
+	if (!get_printing_pattern(head_file))
+		return (free_folder(&head_file->work_list, -1));
+	if (select_sort(head_file->opts, &head_file->work_list) == -1)
+		return (free_folder(&head_file->work_list, -1));
+	if (select_print(head_file, *file_or_dir) == -1)
+		return (free_folder(&head_file->work_list, -1));
+	if (head_file->opts & R_MAJ)
+		if (recursive_folders(head_file) == -1)
+			return (free_folder(&head_file->work_list, -1));
+	clean_process(head_file);
+	return (1);
+}
