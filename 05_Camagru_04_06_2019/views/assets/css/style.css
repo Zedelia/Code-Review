@@ -1,0 +1,293 @@
+body{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+a{
+    text-decoration: none!important;
+}
+td{
+    font-size: .9rem;
+}
+td.email{
+    word-break: break-all;
+}
+ul.modal_list li{
+    list-style-type: circle;
+    margin-left: 40px;
+}
+#footer{
+    background-color: #F5F5F5;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+#info{
+    cursor: pointer;
+}
+#user_picture{
+    margin-right: 10px;
+}
+.img_user img{
+    border: 1px solid black;
+    margin: 30px;
+}
+.info_profile{
+    margin-top: 5vh;
+}
+.picture_profile
+{
+    margin-left: 5vw;
+}
+.form_upload{
+    margin-top: 2vh;
+}
+.user_login{
+    vertical-align: middle;
+}
+.settings_user{
+    margin-left: 20px;
+    line-height: 3rem;
+    vertical-align: middle;
+}
+.gestion_user{
+    margin-top: 5vh;
+}
+
+.login{
+    margin-left: 84px;
+    line-height: 64px;
+    vertical-align: middle;
+}
+.date{
+    line-height: 64px;
+    vertical-align: middle;
+}
+.like, #delete, .delete_filter{
+    cursor: pointer;
+}
+.picture{
+    clear: both;
+    width: 100%;
+    margin-bottom: 1vh;
+    height: auto;
+}
+.content_picture{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3vh;
+}
+#picture_modal{
+    height: 80%;
+    margin-top: 8%;
+    background-color: #F5F5F5;
+    overflow-x: hidden;
+}
+#picture_modal::-webkit-scrollbar { 
+    display: none; 
+}
+.accueil_picture{
+    margin-top: 3vh;
+    margin-bottom: 3vh!important;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+.pagination-top{
+    margin-top: 3vh;
+}
+.pagination{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: #00d1b1;
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+.menu-list a.is-active{
+    background-color: transparent;
+    color: gray;
+    border-left: 1px solid gray;
+}
+.container-filters, .container-users{
+    padding-right: 5vw;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.col {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+.col img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+@media screen and (max-width: 800px) {
+    .col {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .col {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+img#output
+{
+    width: 559.33px;
+}
+.snap-container {
+    margin: 0 !important;
+}
+
+.supperpose {
+    width: 559.33px;
+    /* height: 419.48px; */
+    position: relative;
+    padding: 0;
+    height: auto;
+    margin: auto;
+}
+
+.supperpose2 {
+    position: relative;
+    padding: 0;
+    height: auto;
+    margin: auto;
+}
+
+.coucou {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 559.33px;
+    height: 419.48px;
+}
+
+#videoElement {
+    background-color: #666;
+}
+
+#myCanvas {
+    display: none;
+}
+
+#snap-form {
+    display: none;
+}
+
+#uploading-div {
+    display: none;
+}
+
+.buttons-list {
+    text-align: center;
+}
+
+#container-filters img {
+    width: 60px;
+    margin: 5px;
+}
+
+#div-filter-snap
+{
+    text-align: center;
+}
+
+#img-from-snap {
+    display: none;
+    position: relative;
+}
+
+#calque {
+    height: 425px;
+    width: 559px;
+    position: absolute;
+    top: 0;
+}
+
+#list-filters img {
+    width: 60px;
+    margin: 5px;
+}
+
+#desc-field {
+    display: none;
+}
+#suppperpose {
+    position: relative;
+}
+
+#calc-upload {
+    position : absolute;
+    top: 12px;
+}
+
+.lastphotos {
+    width: calc(50% / 4);
+    padding: 5px;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .lastphotos {
+        width: 50%;
+        margin: auto;
+        padding: 5px;
+    }
+}
